@@ -13,19 +13,16 @@ const images = [
   },
 ];
 
-const galleryList = document.querySelector('.gallery');
+const galleryContainer = document.querySelector(".gallery");
 
 const galleryMarkup = images
-  .map(image => `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}" class="gallery-img"></li>`)
-  .join('');
+  .map(
+    (image) => `
+    <li class="gallery-item">
+      <img src="${image.url}" alt="${image.alt}" width="360" height="240">
+    </li>
+  `,
+  )
+  .join("");
 
-galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
-galleryList.style.display = 'flex';
-galleryList.style.gap = '20px';
-galleryList.style.listStyle = 'none';
-galleryList.style.padding = '0';
-document.querySelectorAll('.gallery-img').forEach(img => {
-  img.style.width = '100%';
-  img.style.maxHeight = '300px';
-  img.style.objectFit = 'cover';
-});
+galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
